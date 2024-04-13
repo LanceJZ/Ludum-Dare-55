@@ -2,10 +2,23 @@
 
 ThePlayer::ThePlayer()
 {
+	for (int i = 0; i < 4; i++)
+	{
+		TheManagers.EM.AddModel3D(Shots[i] = DBG_NEW Shot());
+	}
 }
 
 ThePlayer::~ThePlayer()
 {
+}
+
+void ThePlayer::SetShotModel(Model model)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		Shots[i]->SetModel(model);
+		Shots[i]->Enabled = false;
+	}
 }
 
 bool ThePlayer::Initialize(Utilities* utilities)
@@ -41,6 +54,8 @@ void ThePlayer::Update(float deltaTime)
 	Model3D::Update(deltaTime);
 
 	ScreenEdgeBoundX();
+
+	ScreenEdgeBoundY(WindowHeight + 150.0f, 60.0f);
 }
 
 void ThePlayer::Draw()
@@ -88,6 +103,18 @@ void ThePlayer::NewGame()
 	Score = 0;
 	GameOver = false;
 	Reset();
+}
+
+void ThePlayer::Shoot()
+{
+	for (size_t i = 0; i < 4; i++)
+	{
+		if (!Shots[i]->Enabled)
+		{
+			Shots[i]->SpawnPlayerShot(Position);
+			break;
+		}
+	}
 }
 
 void ThePlayer::Gamepad()
@@ -144,9 +171,15 @@ void ThePlayer::Keyboard()
 
 	if (IsKeyDown(KEY_UP))
 	{
+		Velocity.y = -180.0f;
+	}
+	else if (IsKeyDown(KEY_DOWN))
+	{
+		Velocity.y = 180.0f;
 	}
 	else
 	{
+		Velocity.y = 0;
 	}
 
 	if (IsKeyPressed(KEY_RIGHT_CONTROL) || IsKeyPressed(KEY_LEFT_CONTROL) ||
@@ -154,10 +187,8 @@ void ThePlayer::Keyboard()
 	{
 	}
 
-	if (IsKeyDown(KEY_DOWN))
+	if (IsKeyPressed(KEY_SPACE))
 	{
-	}
-	else
-	{
+		Shoot();
 	}
 }

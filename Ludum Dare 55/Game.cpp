@@ -36,6 +36,9 @@ bool Game::Initialize(Utilities &utilities, GameLogic* gameLogic) //Initialize
 bool Game::Load()
 {
 	Player->SetModel(TheManagers.CM.LoadAndGetModel("Player Ship"));
+	Player->SetShotModel(TheManagers.CM.LoadAndGetModel("Player Shot"));
+	Enemies->SetShotModel(TheManagers.CM.LoadAndGetModel("Shot"));
+	Enemies->SetEnemyOneModel(TheManagers.CM.LoadAndGetModel("Enemy One"));
 
 	return true;
 }

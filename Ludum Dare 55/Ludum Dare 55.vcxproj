@@ -149,18 +149,42 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Enemy One.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="EnemyControl.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Shot.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TheBackground.cpp" />
     <ClCompile Include="ThePlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enemy One.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="EnemyControl.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="Shot.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TheBackground.h" />
     <ClInclude Include="ThePlayer.h" />
   </ItemGroup>

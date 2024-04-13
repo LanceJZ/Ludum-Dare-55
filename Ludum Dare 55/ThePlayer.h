@@ -1,9 +1,12 @@
 #pragma once
 #include "Globals.h"
+#include "Shot.h"
 
 class ThePlayer : public Model3D
 {
 public:
+	Shot* Shots[4] = { nullptr };
+
 	ThePlayer();
 	virtual ~ThePlayer();
 
@@ -13,6 +16,8 @@ public:
 	int Score { 0 };
 	int HighScore { 0 };
 	int Lives { 0 };
+
+	void SetShotModel(Model model);
 
 	bool Initialize(Utilities* utilities);
 	bool BeginRun();
@@ -29,6 +34,7 @@ public:
 private:
 	int NextNewLifeScore = 10000;
 
+	void Shoot();
 	void Gamepad();
 	void Keyboard();
 };
