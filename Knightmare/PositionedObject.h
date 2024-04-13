@@ -56,6 +56,8 @@ public:
 
 	bool ScreenEdgeBoundY();
 	bool ScreenEdgeBoundY(float topOffset, float bottomOffset);
+	bool ScreenEdgeBoundX();
+	bool ScreenEdgeBoundX(float leftOffset, float rightOffset);
 	bool OffScreen();
 	bool OffScreenSide();
 	bool OffScreenTopBottom();

@@ -1,6 +1,5 @@
 #pragma once
 #include "Globals.h"
-#include "Common.h"
 #include "ThePlayer.h"
 
 class EnemyControl : public Common

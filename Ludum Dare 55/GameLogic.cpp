@@ -40,3 +40,62 @@ void GameLogic::Update()
 	Common::Update();
 
 }
+
+void GameLogic::GameInput()
+{
+	if (State == MainMenu)
+	{
+		if (IsGamepadAvailable(0))
+		{
+			if (IsGamepadButtonPressed(0, 15))//Start button
+			{
+				NewGame();
+			}
+		}
+
+		if (IsKeyPressed(KEY_N))
+		{
+			NewGame();
+		}
+
+		if (IsKeyPressed(KEY_D))
+		{
+
+		}
+	}
+
+	if (State == InPlay)
+	{
+		if (IsGamepadAvailable(0))
+		{
+			if (IsGamepadButtonPressed(0, 13)) //Menu Button
+			{
+				State = Pause;
+			}
+
+			if (IsGamepadButtonPressed(0, 8)) //X button
+			{
+				PlayBackgroundMusic = !PlayBackgroundMusic;
+			}
+		}
+
+		if (IsKeyPressed(KEY_M))
+		{
+			PlayBackgroundMusic = !PlayBackgroundMusic;
+		}
+
+
+		if (IsKeyPressed(KEY_P))
+		{
+			State = Pause;
+		}
+
+		if (IsKeyPressed(KEY_B))
+		{
+		}
+	}
+}
+
+void GameLogic::NewGame()
+{
+}

@@ -19,6 +19,8 @@ bool ThePlayer::BeginRun()
 {
 	Model3D::BeginRun();
 
+	Y(FieldSize.y * 0.5f - 60.0f);
+
 	return false;
 }
 
@@ -38,6 +40,7 @@ void ThePlayer::Update(float deltaTime)
 {
 	Model3D::Update(deltaTime);
 
+	ScreenEdgeBoundX();
 }
 
 void ThePlayer::Draw()
@@ -124,14 +127,19 @@ void ThePlayer::Gamepad()
 
 void ThePlayer::Keyboard()
 {
+	float xSpeed = 180.0f;
+
 	if (IsKeyDown(KEY_RIGHT))
 	{
+		Velocity.x = xSpeed;
 	}
 	else if (IsKeyDown(KEY_LEFT))
 	{
+		Velocity.x = -xSpeed;
 	}
 	else
 	{
+		Velocity.x = 0;
 	}
 
 	if (IsKeyDown(KEY_UP))

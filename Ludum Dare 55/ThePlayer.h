@@ -1,6 +1,5 @@
 #pragma once
 #include "Globals.h"
-#include "Model3D.h"
 
 class ThePlayer : public Model3D
 {

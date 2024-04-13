@@ -2,6 +2,11 @@
 
 Game::Game()
 {
+	//When adding classes to EM, must be pointer to heap,IE: Name = new Class().
+	LogicID = TheManagers.EM.AddCommon(Logic = DBG_NEW GameLogic());
+	BackGroundID = TheManagers.EM.AddCommon(BackGround = DBG_NEW TheBackground());
+	EnemiesID = TheManagers.EM.AddCommon(Enemies = DBG_NEW EnemyControl());
+	PlayerID = TheManagers.EM.AddModel3D(Player = DBG_NEW ThePlayer());
 }
 
 Game::~Game()
@@ -11,18 +16,12 @@ Game::~Game()
 bool Game::Initialize(Utilities &utilities, GameLogic* gameLogic) //Initialize
 {
 	TheUtilities = &utilities;
-	//Logic = gameLogic;
 
 	Common::Initialize(&utilities);
 
-	float multi = 4.0f;
-	FieldSize = { GetScreenWidth() * multi, (float)GetScreenHeight() };
-
-	//When adding classes to EM, must be pointer to heap,IE: Name = new Class().
-	LogicID = TheManagers.EM.AddCommon(Logic = DBG_NEW GameLogic());
-	BackGroundID = TheManagers.EM.AddCommon(BackGround = DBG_NEW TheBackground());
-	EnemiesID = TheManagers.EM.AddCommon(Enemies = DBG_NEW EnemyControl());
-	PlayerID = TheManagers.EM.AddModel3D(Player = DBG_NEW ThePlayer());
+	float multiX = 1.0f;
+	float multiY = 1.0f;
+	FieldSize = { GetScreenWidth() * multiX, (float)GetScreenHeight() * multiY};
 
 	Logic->SetPlayer(Player);
 	Logic->SetEnemies(Enemies);
@@ -36,6 +35,7 @@ bool Game::Initialize(Utilities &utilities, GameLogic* gameLogic) //Initialize
 
 bool Game::Load()
 {
+	Player->SetModel(TheManagers.CM.LoadAndGetModel("Player Ship"));
 
 	return true;
 }
@@ -44,9 +44,6 @@ bool Game::BeginRun()
 {
 	//Any Entities added after this point need this method fired manually.
 	TheManagers.BeginRun();
-
-
-	NewGame();
 
 	return true;
 }
@@ -60,8 +57,7 @@ void Game::ProcessInput()
 
 void Game::Update(float deltaTime)
 {
-	if (State == Pause)
-		return;
+	if (Paused)	return;
 
 	TheManagers.EM.Update(deltaTime);
 }
@@ -99,78 +95,12 @@ void Game::Draw2D()
 {
 }
 
-void Game::NewGame()
-{
-	State = InPlay;
-
-}
-
 void Game::GameInput()
 {
-	if (State == MainMenu)
+	if (IsKeyPressed(KEY_P))
 	{
-		if (IsGamepadAvailable(0))
-		{
-			if (IsGamepadButtonPressed(0, 15))//Start button
-			{
-				NewGame();
-			}
-		}
-
-		if (IsKeyPressed(KEY_N))
-		{
-			NewGame();
-		}
-
-		if (IsKeyPressed(KEY_D))
-		{
-
-		}
+		Paused = !Paused;
 	}
 
-	if (State == InPlay)
-	{
-		if (IsGamepadAvailable(0))
-		{
-			if (IsGamepadButtonPressed(0, 13)) //Menu Button
-			{
-				State = Pause;
-			}
-
-			if (IsGamepadButtonPressed(0, 8)) //X button
-			{
-				PlayBackgroundMusic = !PlayBackgroundMusic;
-			}
-		}
-
-		if (IsKeyPressed(KEY_M))
-		{
-			PlayBackgroundMusic = !PlayBackgroundMusic;
-		}
-
-
-		if (IsKeyPressed(KEY_P))
-		{
-			State = Pause;
-		}
-
-		if (IsKeyPressed(KEY_B))
-		{
-		}
-	}
-	else if (State == Pause)
-	{
-		if (IsKeyPressed(KEY_P))
-		{
-			State = InPlay;
-		}
-
-		if (IsGamepadAvailable(0))
-		{
-			if (IsGamepadButtonPressed(0, 13)) //Menu Button
-			{
-				State = InPlay;
-			}
-		}
-	}
+	Logic->GameInput();
 }
