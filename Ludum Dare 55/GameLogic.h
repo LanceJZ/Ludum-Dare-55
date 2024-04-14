@@ -3,6 +3,7 @@
 #include "Utilities.h"
 #include "ThePlayer.h"
 #include "EnemyControl.h"
+#include "Turret.h"
 
 enum GameState
 {
@@ -21,10 +22,14 @@ public:
 	virtual ~GameLogic();
 
 	bool PlayBackgroundMusic = true;
+	bool TurretsActive = false;
+
 	GameState State = MainMenu;
 
 	void SetPlayer(ThePlayer* player);
 	void SetEnemies(EnemyControl* enemies);
+	void SetShotModel(Model model);
+	void SetTurretModel(Model model);
 
 	bool Initialize(Utilities* utilities);
 	bool BeginRun();
@@ -33,11 +38,19 @@ public:
 	void GameInput();
 
 private:
+	size_t TurretTimerID = 0;
+
 	Vector2 AdjustedFieldSize = {};
 
 	ThePlayer* Player = {};
 	EnemyControl* Enemies = {};
+	Turret* TurretLeft = {};
+	Turret* TurretRight = {};
 
 	void NewGame();
+	void UpdateTurrets();
+	void SummonTurrets();
+	void UpdateEnemySummonPoints();
+	void CheckCollisions();
 };
 

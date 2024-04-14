@@ -10,6 +10,8 @@ public:
 	EnemyControl();
 	virtual ~EnemyControl();
 
+	int Wave = 0;
+
 	std::vector<Enemy_One*> EnemyOnes;
 	std::vector<Enemy_Two*> EnemyTwos;
 
@@ -24,12 +26,13 @@ public:
 	void Update();
 
 private:
-	Model ShotModel;
-	Model EnemyOneModel;
-	Model EnemyTwoModel;
+	Model ShotModel = { 0 };
+	Model EnemyOneModel = { 0 };
+	Model EnemyTwoModel = { 0 };
 
 	ThePlayer *Player = nullptr;
 
+	void NewWave();
 	void Reset();
 	void SpawnEnemyOne(size_t count);
 	void SpawnEnemyTwo(size_t count);

@@ -1,18 +1,18 @@
 #pragma once
 #include "Globals.h"
-#include "ThePlayer.h"
+#include "EnemyControl.h"
 #include "Shot.h"
 
-class Enemy : public Model3D
+class Turret : public Model3D
 {
 public:
-	Enemy();
-	virtual ~Enemy();
-
 	std::vector<Shot*> Shots;
 
-	void SetPlayer(ThePlayer* player);
+	Turret();
+	virtual ~Turret();
+
 	void SetShotModel(Model model);
+	void SetEnemies(EnemyControl* enemies);
 
 	bool Initialize(Utilities* utilities);
 	bool BeginRun();
@@ -22,19 +22,15 @@ public:
 
 	void Spawn(Vector3 position);
 	void Destroy();
-	void Hit();
-
-protected:
-	size_t ShotTimerID = 0;
-
-	ThePlayer* Player = nullptr;
-
-	void Shoot();
-	void Shoot(Vector3 velocity);
-	virtual bool CheckCollision();
 
 private:
+	size_t ShotTimerID = 0;
 
-	Model ShotModel = { 0 };
+	Vector3 Target = { 0.0f, 0.0f, 0.0f };
 
+	Model ShotModel;
+
+	EnemyControl* Enemies = nullptr;
+
+	void Shoot();
 };

@@ -39,6 +39,7 @@ void Enemy::Update(float deltaTime)
 {
 	Model3D::Update(deltaTime);
 
+	CheckCollision();
 }
 
 void Enemy::Draw()
@@ -50,6 +51,13 @@ void Enemy::Spawn(Vector3 position)
 {
 	Entity::Spawn(position);
 
+}
+
+void Enemy::Hit()
+{
+	Entity::Hit();
+
+	Destroy();
 }
 
 void Enemy::Destroy()
@@ -113,4 +121,22 @@ void Enemy::Shoot(Vector3 velocity)
 	}
 
 	Shots[spawnNumber]->Spawn(Position, velocity);
+}
+
+bool Enemy::CheckCollision()
+{
+	if (CirclesIntersect(*Player)) Hit();
+
+	for (auto &shot : Player->Shots)
+	{
+		if (shot->CirclesIntersectBullet(*this))
+		{
+			Hit();
+			shot->Destroy();
+		}
+
+		return true;
+	}
+
+	return false;
 }

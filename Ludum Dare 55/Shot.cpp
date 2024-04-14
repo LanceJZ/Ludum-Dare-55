@@ -12,6 +12,8 @@ bool Shot::Initialize(Utilities* utilities)
 {
 	Model3D::Initialize(utilities);
 
+	Radius = 6.0f;
+
 	return false;
 }
 

@@ -28,6 +28,7 @@ public:
 
 	void Spawn(Vector3 position);
 	void Destroy();
+	void Hit();
 
 private:
 	size_t TurnTimerID = 0;

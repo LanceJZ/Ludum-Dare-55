@@ -16,6 +16,7 @@ public:
 	int Score { 0 };
 	int HighScore { 0 };
 	int Lives { 0 };
+	int SummonPoints { 0 };
 
 	void SetShotModel(Model model);
 

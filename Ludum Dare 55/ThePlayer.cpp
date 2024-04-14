@@ -18,6 +18,7 @@ void ThePlayer::SetShotModel(Model model)
 	{
 		Shots[i]->SetModel(model);
 		Shots[i]->Enabled = false;
+		Shots[i]->Radius = 10.0f;
 	}
 }
 

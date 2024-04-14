@@ -38,8 +38,9 @@ bool EnemyControl::Initialize(Utilities* utilities)
 
 bool EnemyControl::BeginRun()
 {
-	SpawnEnemyOne(12);
-	SpawnEnemyTwo(1);
+	Common::BeginRun();
+
+	NewWave();
 
 	return false;
 }
@@ -48,10 +49,34 @@ void EnemyControl::Update()
 {
 	Common::Update();
 
+	int numberOfEnemies = 0;
+
+	for (auto& enemy : EnemyOnes)
+	{
+		if (enemy->Enabled) numberOfEnemies++;
+	}
+
+	for (auto& enemy : EnemyTwos)
+	{
+		if (enemy->Enabled) numberOfEnemies++;
+	}
+
+	if (numberOfEnemies == 0)
+	{
+		Wave++;
+		NewWave();
+	}
+}
+
+void EnemyControl::NewWave()
+{
+	SpawnEnemyOne(6 + (3 * Wave));
+	SpawnEnemyTwo(Wave + 2);
 }
 
 void EnemyControl::Reset()
 {
+	Wave = 0;
 }
 
 void EnemyControl::SpawnEnemyOne(size_t count)

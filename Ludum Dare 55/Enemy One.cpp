@@ -14,6 +14,8 @@ bool Enemy_One::Initialize(Utilities* utilities)
 {
 	Enemy::Initialize(utilities);
 
+	Radius = 20.0f;
+
 	return false;
 }
 
@@ -31,7 +33,7 @@ void Enemy_One::Update(float deltaTime)
 	if (TheManagers.EM.TimerElapsed(ShotTimerID))
 	{
 		Shoot();
-		TheManagers.EM.ResetTimer(ShotTimerID, GetRandomFloat(0.5f, 1.0f));
+		TheManagers.EM.ResetTimer(ShotTimerID, GetRandomFloat(0.75f, 2.75f));
 	}
 
 	if (ScreenEdgeBoundX()) Jiggle();
@@ -63,6 +65,14 @@ void Enemy_One::Destroy()
 {
 	Enemy::Destroy();
 
+}
+
+bool Enemy_One::CheckCollision()
+{
+	Enemy::CheckCollision();
+
+
+	return false;
 }
 
 void Enemy_One::TimeToDive()

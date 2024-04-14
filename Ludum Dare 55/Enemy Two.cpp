@@ -13,6 +13,8 @@ bool Enemy_Two::Initialize(Utilities* utilities)
 {
 	Enemy::Initialize(utilities);
 
+	Radius = 20.0f;
+
 	return false;
 }
 
@@ -56,6 +58,8 @@ void Enemy_Two::Spawn(Vector3 position)
 
 	CurrentState = StateTwo::GoFoward;
 	TheManagers.EM.ResetTimer(TurnTimerID, GetRandomFloat(3.5f, 5.0f));
+	RotationVelocityZ = 0.0f;
+	Velocity.y = 0.0f;
 
 	if (GetRandomValue(0, 1) == 0)
 	{
@@ -75,6 +79,13 @@ void Enemy_Two::Destroy()
 {
 	Enemy::Destroy();
 
+}
+
+void Enemy_Two::Hit()
+{
+	Enemy::Hit();
+
+	Player->SummonPoints++;
 }
 
 void Enemy_Two::Turn()

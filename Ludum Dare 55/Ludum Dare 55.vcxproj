@@ -171,6 +171,10 @@
     </ClCompile>
     <ClCompile Include="TheBackground.cpp" />
     <ClCompile Include="ThePlayer.cpp" />
+    <ClCompile Include="Turret.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy One.h">
@@ -195,6 +199,10 @@
     </ClInclude>
     <ClInclude Include="TheBackground.h" />
     <ClInclude Include="ThePlayer.h" />
+    <ClInclude Include="Turret.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Knightmare\Knightmare Engine.vcxproj">

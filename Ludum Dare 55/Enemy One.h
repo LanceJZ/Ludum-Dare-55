@@ -32,6 +32,8 @@ private:
 
 	float Row = 0.0f;
 
+	bool CheckCollision();
+
 	void TimeToDive();
 	void Jiggle();
 	void BounceOffSides();
