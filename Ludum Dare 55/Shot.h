@@ -14,6 +14,7 @@ public:
 	void Draw();
 
 	void Spawn(Vector3 position);
+	void Spawn(Vector3 position, Vector3 velocity);
 	void SpawnPlayerShot(Vector3 position);
 	void Destroy();
 

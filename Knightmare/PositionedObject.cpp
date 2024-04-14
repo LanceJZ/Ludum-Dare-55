@@ -363,6 +363,13 @@ void PositionedObject::RotateVelocity(Vector3& position, float turnSpeed, float 
 	Velocity = GetVelocityFromAngleZ(RotationZ, speed);
 }
 
+void PositionedObject::CheckPlayfieldSidesWarp()
+{
+	if (X() > WindowWidth) X(-WindowWidth);
+
+	if (X() < -WindowWidth) X(WindowWidth);
+}
+
 void PositionedObject::CheckPlayfieldSidesWarp(float left, float right)
 {
 	if (X() > WindowWidth * right)

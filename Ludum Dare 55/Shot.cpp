@@ -42,6 +42,14 @@ void Shot::Spawn(Vector3 position)
 	Velocity.y = 300.0f;
 }
 
+void Shot::Spawn(Vector3 position, Vector3 velocity)
+{
+	Entity::Spawn(position);
+
+	Enabled = true;
+	Velocity = velocity;
+}
+
 void Shot::SpawnPlayerShot(Vector3 position)
 {
 	Entity::Spawn(position);

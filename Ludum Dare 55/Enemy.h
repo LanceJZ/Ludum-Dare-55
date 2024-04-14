@@ -27,6 +27,7 @@ protected:
 	size_t ShotTimerID = 0;
 
 	void Shoot();
+	void Shoot(Vector3 velocity);
 
 private:
 

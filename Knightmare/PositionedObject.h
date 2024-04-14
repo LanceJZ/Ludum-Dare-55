@@ -80,6 +80,7 @@ public:
 	void CheckScreenEdgeY();
 	void LeavePlay(float turnSpeed, float speed);
 	void RotateVelocity(Vector3& position, float turnSpeed, float speed);
+	void CheckPlayfieldSidesWarp();
 	void CheckPlayfieldSidesWarp(float left, float right);
 	void CheckPlayfieldHeightWarp(float top, float bottom);
 	void AimAtTargetZ(Vector3& target, float facingAngle, float magnitute);

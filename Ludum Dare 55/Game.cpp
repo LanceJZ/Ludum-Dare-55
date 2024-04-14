@@ -39,6 +39,7 @@ bool Game::Load()
 	Player->SetShotModel(TheManagers.CM.LoadAndGetModel("Player Shot"));
 	Enemies->SetShotModel(TheManagers.CM.LoadAndGetModel("Shot"));
 	Enemies->SetEnemyOneModel(TheManagers.CM.LoadAndGetModel("Enemy One"));
+	Enemies->SetEnemyTwoModel(TheManagers.CM.LoadAndGetModel("Enemy Two"));
 
 	return true;
 }
