@@ -2,6 +2,7 @@
 #include "Globals.h"
 #include "ThePlayer.h"
 #include "Shot.h"
+#include "ParticleManager.h"
 
 class Enemy : public Model3D
 {
@@ -15,6 +16,8 @@ public:
 	void SetShotModel(Model model);
 	void SetFireSound(Sound fireSound);
 	void SetExplodeSound(Sound explodeSound);
+
+	void SetParticleManager(ParticleManager* particleManager);
 
 	bool Initialize(Utilities* utilities);
 	bool BeginRun();
@@ -36,6 +39,7 @@ protected:
 	Sound ExplodeSound = {};
 
 	ThePlayer* Player = nullptr;
+	ParticleManager* PM = nullptr;
 
 	void Shoot();
 	void Shoot(Vector3 velocity);

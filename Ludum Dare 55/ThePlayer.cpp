@@ -37,6 +37,11 @@ void ThePlayer::SetExtraLifeSound(Sound extraLifeSound)
 	ExtraLifeSound = extraLifeSound;
 }
 
+void ThePlayer::SetParticleManager(ParticleManager* particleManager)
+{
+	PM = particleManager;
+}
+
 bool ThePlayer::Initialize(Utilities* utilities)
 {
 	Model3D::Initialize(utilities);
@@ -58,6 +63,8 @@ bool ThePlayer::BeginRun()
 void ThePlayer::Input()
 {
 	Model3D::Input();
+
+	if (!Enabled) return;
 
 	Keyboard();
 
@@ -85,6 +92,8 @@ void ThePlayer::Draw()
 void ThePlayer::Hit()
 {
 	PlaySound(ExplodeSound);
+	PM->Spawn(Position, Vector3Multiply(Velocity, {0.5f}),
+		40, 100, 100, 5.0f, {150, 100, 250, 255});
 
 	Acceleration = { 0 };
 	Velocity = { 0 };

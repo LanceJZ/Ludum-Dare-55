@@ -3,6 +3,7 @@
 #include "ThePlayer.h"
 #include "Enemy One.h"
 #include "Enemy Two.h"
+#include "ParticleManager.h"
 
 class EnemyControl : public Common
 {
@@ -28,6 +29,8 @@ public:
 	void SetEnemyTwoExplodeSound(Sound sound);
 	void SetNewWaveSound(Sound sound);
 
+	void SetParticleManager(ParticleManager* particleManager);
+
 	bool Initialize(Utilities* utilities);
 	bool BeginRun();
 
@@ -48,6 +51,7 @@ private:
 	Sound NewWaveSound = { 0 };
 
 	ThePlayer *Player = nullptr;
+	ParticleManager* PM = nullptr;
 
 	void NewWave();
 	void ClearField();

@@ -1,6 +1,7 @@
 #pragma once
 #include "Globals.h"
 #include "Shot.h"
+#include "ParticleManager.h"
 
 class ThePlayer : public Model3D
 {
@@ -23,6 +24,8 @@ public:
 	void SetExplodeSound(Sound explodeSound);
 	void SetExtraLifeSound(Sound extraLifeSound);
 
+	void SetParticleManager(ParticleManager* particleManager);
+
 	bool Initialize(Utilities* utilities);
 	bool BeginRun();
 
@@ -41,6 +44,8 @@ private:
 	Sound FireSound = {};
 	Sound ExplodeSound = {};
 	Sound ExtraLifeSound = {};
+
+	ParticleManager* PM = nullptr;
 
 	void Shoot();
 	void Gamepad();

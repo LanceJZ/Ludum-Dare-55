@@ -17,23 +17,19 @@ public:
 	ParticleManager();
 	virtual ~ParticleManager();
 
-	virtual void SetCamera(Camera &camera);
 	virtual void SetManagers(Managers& managers);
 	virtual void SetCubeModel(Model model);
 
 	virtual bool Initialize(Utilities* utilities);
 	virtual bool BeginRun();
 
-	virtual void Input();
 	virtual void Update();
-	virtual void Draw();
 
 	virtual void Spawn(Vector3 position, Vector3 velocity, float radius,
 		float speed,  int count, float time, Color color);
 	virtual void Reset();
 protected:
 	Model CubeModel = {};
-	Camera* Cam = {};
 	Managers* Man = {};
 
 private:

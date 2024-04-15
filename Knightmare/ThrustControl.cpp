@@ -29,12 +29,6 @@ void ThrustControl::Update()
 
 }
 
-void ThrustControl::Draw()
-{
-	ParticleManager::Draw();
-
-}
-
 void ThrustControl::Spawn(Vector3 position, Vector3 velocity, float endWidth,
 	float length, int count, float time, Color color)
 {

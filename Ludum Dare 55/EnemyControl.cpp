@@ -54,6 +54,11 @@ void EnemyControl::SetNewWaveSound(Sound sound)
 	NewWaveSound = sound;
 }
 
+void EnemyControl::SetParticleManager(ParticleManager* particleManager)
+{
+	PM = particleManager;
+}
+
 bool EnemyControl::Initialize(Utilities* utilities)
 {
 	Common::Initialize(utilities);
@@ -168,6 +173,7 @@ void EnemyControl::SpawnEnemyOne(size_t count)
 			EnemyOnes[spawnNumber]->SetShotModel(ShotModel);
 			EnemyOnes[spawnNumber]->SetFireSound(EnemyOneFireSound);
 			EnemyOnes[spawnNumber]->SetExplodeSound(EnemyOneExplodeSound);
+			EnemyOnes[spawnNumber]->SetParticleManager(PM);
 			EnemyOnes[spawnNumber]->Initialize(TheUtilities);
 			EnemyOnes[spawnNumber]->BeginRun();
 		}
@@ -202,6 +208,7 @@ void EnemyControl::SpawnEnemyTwo(size_t count)
 			EnemyTwos[spawnNumber]->SetShotModel(ShotModel);
 			EnemyTwos[spawnNumber]->SetFireSound(EnemyTwoFireSound);
 			EnemyTwos[spawnNumber]->SetExplodeSound(EnemyTwoExplodeSound);
+			EnemyTwos[spawnNumber]->SetParticleManager(PM);
 			EnemyTwos[spawnNumber]->Initialize(TheUtilities);
 			EnemyTwos[spawnNumber]->BeginRun();
 		}

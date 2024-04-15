@@ -30,6 +30,9 @@ bool Game::Initialize(Utilities &utilities, GameLogic* gameLogic) //Initialize
 
 	//Any Entities added after this point need this method fired manually.
 	TheManagers.Initialize();
+
+	PM.Initialize(&utilities);
+
 	return true;
 }
 
@@ -39,6 +42,7 @@ bool Game::Load()
 
 	Player->SetModel(TheManagers.CM.LoadAndGetModel("Player Ship"));
 	Player->SetShotModel(TheManagers.CM.LoadAndGetModel("Player Shot"));
+	Player->SetParticleManager(&PM);
 	Logic->SetPlayer(Player);
 	Logic->SetEnemies(Enemies);
 	Logic->SetShotModel(shot);
@@ -59,6 +63,9 @@ bool Game::Load()
 	Enemies->SetEnemyTwoFireSound(TheManagers.CM.LoadAndGetSound("Enemy Two Fire"));
 	Enemies->SetEnemyTwoExplodeSound(TheManagers.CM.LoadAndGetSound("Enemy Two Explode"));
 	Enemies->SetNewWaveSound(TheManagers.CM.LoadAndGetSound("Start Of Wave"));
+	Enemies->SetParticleManager(&PM);
+
+	PM.SetCubeModel(TheManagers.CM.LoadAndGetModel("Cube"));
 
 	return true;
 }
@@ -67,6 +74,8 @@ bool Game::BeginRun()
 {
 	//Any Entities added after this point need this method fired manually.
 	TheManagers.BeginRun();
+
+	PM.SetManagers(TheManagers);
 
 	return true;
 }

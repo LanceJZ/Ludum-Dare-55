@@ -29,6 +29,11 @@ void Enemy::SetExplodeSound(Sound explodeSound)
 	ExplodeSound = explodeSound;
 }
 
+void Enemy::SetParticleManager(ParticleManager* particleManager)
+{
+	PM = particleManager;
+}
+
 bool Enemy::Initialize(Utilities* utilities)
 {
 	Model3D::Initialize(utilities);
@@ -71,6 +76,9 @@ void Enemy::Hit()
 
 	Player->ScoreUpdate(Points);
 	Destroy();
+
+	PM->Spawn(Position, Vector3Multiply(Velocity, {0.5f}),
+		20, 100, 20, 2.0f, { 255, 0, 0, 255 });
 }
 
 void Enemy::Reset()

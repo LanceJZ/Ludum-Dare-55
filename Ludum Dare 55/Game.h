@@ -6,6 +6,7 @@
 #include "ThePlayer.h"
 #include "EnemyControl.h"
 #include "TheBackground.h"
+#include "ParticleManager.h"
 
 class Game : Common
 {
@@ -36,5 +37,7 @@ private:
 	TheBackground* BackGround = {};
 	ThePlayer* Player = {};
 	EnemyControl* Enemies = {};
+
+	ParticleManager PM = {};
 };
 
