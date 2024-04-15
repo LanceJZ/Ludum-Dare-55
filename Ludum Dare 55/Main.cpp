@@ -21,7 +21,7 @@ Managers TheManagers = {};
 Camera TheCamera = {};
 Vector2 FieldSize = {};
 
-int main()
+int Main()
 {
 	static Game game;
 

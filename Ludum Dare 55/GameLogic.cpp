@@ -200,7 +200,7 @@ void GameLogic::SummonTurrets()
 	TurretLeft->Spawn({-FieldSize.x * 0.5f + buffer, FieldSize.y * 0.5f - buffer, 0.0f});
 	TurretRight->Spawn({FieldSize.x * 0.5f - buffer, FieldSize.y * 0.5f - buffer, 0.0f});
 
-	TheManagers.EM.ResetTimer(TurretTimerID, GetRandomFloat(10.5f, 20.0f));
+	TheManagers.EM.ResetTimer(TurretTimerID, GetRandomFloat(3.5f, 5.2f));
 }
 
 void GameLogic::UpdateEnemySummonPoints()

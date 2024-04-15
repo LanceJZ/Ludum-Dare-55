@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{c6b37a15-c965-4fa0-adfb-542a6498139e}</ProjectGuid>
-    <RootNamespace>Ludum_Dare_55</RootNamespace>
+    <ProjectGuid>{8abdfafd-f6f9-4ec0-82fd-0fff0b4ef9d1}</ProjectGuid>
+    <RootNamespace>Game_Template</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -149,64 +149,42 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Enemy One.cpp">
+    <ClCompile Include="EnemyControl.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Enemy Two.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="EnemyControl.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Shot.cpp">
+    <ClCompile Include="TheBackground.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="TheBackground.cpp" />
-    <ClCompile Include="ThePlayer.cpp" />
-    <ClCompile Include="Turret.cpp">
+    <ClCompile Include="ThePlayer.cpp">
       <SubType>
       </SubType>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Enemy One.h">
+    <ClInclude Include="EnemyControl.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Enemy Two.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="EnemyControl.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="Globals.h" />
-    <ClInclude Include="Shot.h">
+    <ClInclude Include="TheBackground.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="TheBackground.h" />
-    <ClInclude Include="ThePlayer.h" />
-    <ClInclude Include="Turret.h">
+    <ClInclude Include="ThePlayer.h">
       <SubType>
       </SubType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Knightmare\Knightmare Engine.vcxproj">
-      <Project>{df01c12e-d2e5-4575-b442-7bc9258eb030}</Project>
+      <Project>{d611f280-1610-4118-9873-019e8774b070}</Project>
     </ProjectReference>
     <ProjectReference Include="..\raylib\projects\VS2022\raylib\raylib.vcxproj">
       <Project>{e89d61ac-55de-4482-afd4-df7242ebc859}</Project>

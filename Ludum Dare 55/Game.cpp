@@ -138,6 +138,22 @@ void Game::Draw2D()
 	DrawText("Wave:", 800, FieldSize.y - 45, 45, BLUE);
 	DrawText(std::to_string(Enemies->Wave + 1).c_str(), 800 + (6 * 25),
 		FieldSize.y - 45, 45, BLUE);
+
+	if (Logic->State == MainMenu)
+	{
+		DrawText("Press 'N' To start New Game.", 150,
+			FieldSize.y / 3 + (2 * 40), 45, BLUE);
+		DrawText("Use Arrow Keys to move.", 150,
+			FieldSize.y / 3 + (3 * 40), 45, BLUE);
+		DrawText("Space To fire.", 150,
+			FieldSize.y / 3 + (4 * 40), 45, BLUE);
+		DrawText("Left CTRL to summon turrets.", 150,
+			FieldSize.y / 3 + (5 * 40), 45, BLUE);
+
+		DrawText("Destroy Flayers to get summon points.", 150,
+			FieldSize.y / 3 + (6 * 40), 45, BLUE);
+
+	}
 }
 
 void Game::GameInput()
