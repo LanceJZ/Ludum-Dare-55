@@ -36,6 +36,17 @@ void GameLogic::SetTurretModel(Model model)
 	TurretRight->SetModel(model);
 }
 
+void GameLogic::SetTurretFireSound(Sound sound)
+{
+	TurretLeft->SetFireSound(sound);
+	TurretRight->SetFireSound(sound);
+}
+
+void GameLogic::SetEndGameSound(Sound sound)
+{
+	EndGameSound = sound;
+}
+
 bool GameLogic::Initialize(Utilities* utilities)
 {
 	Common::Initialize(utilities);
@@ -155,6 +166,7 @@ void GameLogic::UpdatePlayer()
 		}
 		else
 		{
+			PlaySound(EndGameSound);
 			ResetField();
 			return;
 		}

@@ -22,6 +22,21 @@ void ThePlayer::SetShotModel(Model model)
 	}
 }
 
+void ThePlayer::SetFireSound(Sound fireSound)
+{
+	FireSound = fireSound;
+}
+
+void ThePlayer::SetExplodeSound(Sound explodeSound)
+{
+	ExplodeSound = explodeSound;
+}
+
+void ThePlayer::SetExtraLifeSound(Sound extraLifeSound)
+{
+	ExtraLifeSound = extraLifeSound;
+}
+
 bool ThePlayer::Initialize(Utilities* utilities)
 {
 	Model3D::Initialize(utilities);
@@ -69,6 +84,8 @@ void ThePlayer::Draw()
 
 void ThePlayer::Hit()
 {
+	PlaySound(ExplodeSound);
+
 	Acceleration = { 0 };
 	Velocity = { 0 };
 	Lives--;
@@ -86,6 +103,8 @@ void ThePlayer::ScoreUpdate(int addToScore)
 
 	if (Score > NextNewLifeScore)
 	{
+		PlaySound(ExtraLifeSound);
+
 		NextNewLifeScore += 10000;
 		Lives++;
 		NewLife = true;
@@ -120,6 +139,8 @@ void ThePlayer::Shoot()
 	{
 		if (!Shots[i]->Enabled)
 		{
+			SetSoundVolume(FireSound, 0.25f);
+			PlaySound(FireSound);
 			Shots[i]->SpawnPlayerShot(Position);
 			break;
 		}

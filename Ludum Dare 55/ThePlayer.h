@@ -19,6 +19,9 @@ public:
 	int SummonPoints { 0 };
 
 	void SetShotModel(Model model);
+	void SetFireSound(Sound fireSound);
+	void SetExplodeSound(Sound explodeSound);
+	void SetExtraLifeSound(Sound extraLifeSound);
 
 	bool Initialize(Utilities* utilities);
 	bool BeginRun();
@@ -34,6 +37,10 @@ public:
 
 private:
 	int NextNewLifeScore = 10000;
+
+	Sound FireSound = {};
+	Sound ExplodeSound = {};
+	Sound ExtraLifeSound = {};
 
 	void Shoot();
 	void Gamepad();

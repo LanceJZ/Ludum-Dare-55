@@ -30,6 +30,8 @@ public:
 	void SetEnemies(EnemyControl* enemies);
 	void SetShotModel(Model model);
 	void SetTurretModel(Model model);
+	void SetTurretFireSound(Sound sound);
+	void SetEndGameSound(Sound sound);
 
 	bool Initialize(Utilities* utilities);
 	bool BeginRun();
@@ -41,6 +43,8 @@ private:
 	size_t TurretTimerID = 0;
 
 	Vector2 AdjustedFieldSize = {};
+
+	Sound EndGameSound = {};
 
 	ThePlayer* Player = {};
 	EnemyControl* Enemies = {};

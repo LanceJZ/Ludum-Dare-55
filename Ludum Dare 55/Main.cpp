@@ -28,7 +28,7 @@ int main()
 	int windowHeight = 960; //height
 	int windowWidth = 1280; //width
 
-	InitWindow(windowWidth, windowHeight, "Bullet Storm Extrema - Alpha 1.0");
+	InitWindow(windowWidth, windowHeight, "Bullet Storm Extrema - Alpha 2.0");
 	InitAudioDevice();
 
 	Image icon = LoadImage("icon.png");

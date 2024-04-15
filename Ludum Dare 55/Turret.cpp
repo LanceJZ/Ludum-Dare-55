@@ -14,6 +14,11 @@ void Turret::SetShotModel(Model model)
 	ShotModel = model;
 }
 
+void Turret::SetFireSound(Sound fireSound)
+{
+	FireSound = fireSound;
+}
+
 void Turret::SetEnemies(EnemyControl* enemies)
 {
 	Enemies = enemies;
@@ -68,11 +73,18 @@ void Turret::Destroy()
 {
 	Entity::Destroy();
 
+	for (auto& shot : Shots)
+	{
+		shot->Destroy();
+	}
+
 	Enabled = false;
 }
 
 void Turret::Shoot()
 {
+	PlaySound(FireSound);
+
 	bool spawnNewShot = true;
 	size_t spawnNumber = Shots.size();
 

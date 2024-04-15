@@ -13,6 +13,8 @@ public:
 
 	void SetPlayer(ThePlayer* player);
 	void SetShotModel(Model model);
+	void SetFireSound(Sound fireSound);
+	void SetExplodeSound(Sound explodeSound);
 
 	bool Initialize(Utilities* utilities);
 	bool BeginRun();
@@ -29,6 +31,9 @@ protected:
 	size_t ShotTimerID = 0;
 
 	int Points = 0;
+
+	Sound FireSound = {};
+	Sound ExplodeSound = {};
 
 	ThePlayer* Player = nullptr;
 

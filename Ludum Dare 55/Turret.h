@@ -12,6 +12,7 @@ public:
 	virtual ~Turret();
 
 	void SetShotModel(Model model);
+	void SetFireSound(Sound fireSound);
 	void SetEnemies(EnemyControl* enemies);
 
 	bool Initialize(Utilities* utilities);
@@ -28,7 +29,8 @@ private:
 
 	Vector3 Target = { 0.0f, 0.0f, 0.0f };
 
-	Model ShotModel;
+	Sound FireSound = {};
+	Model ShotModel = {};
 
 	EnemyControl* Enemies = nullptr;
 

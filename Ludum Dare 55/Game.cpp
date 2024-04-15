@@ -47,6 +47,19 @@ bool Game::Load()
 	Enemies->SetEnemyOneModel(TheManagers.CM.LoadAndGetModel("Enemy One"));
 	Enemies->SetEnemyTwoModel(TheManagers.CM.LoadAndGetModel("Enemy Two"));
 
+	Player->SetFireSound(TheManagers.CM.LoadAndGetSound("Player Fire"));
+	Player->SetExplodeSound(TheManagers.CM.LoadAndGetSound("Player Explode"));
+	Player->SetExtraLifeSound(TheManagers.CM.LoadAndGetSound("Player Extra Life"));
+
+	Logic->SetEndGameSound(TheManagers.CM.LoadAndGetSound("Game Over"));
+	Logic->SetTurretFireSound(TheManagers.CM.LoadAndGetSound("Turret Fire"));
+
+	Enemies->SetEnemyOneFireSound(TheManagers.CM.LoadAndGetSound("Enemy One Fire"));
+	Enemies->SetEnemyOneExplodeSound(TheManagers.CM.LoadAndGetSound("Enemy One Explode"));
+	Enemies->SetEnemyTwoFireSound(TheManagers.CM.LoadAndGetSound("Enemy Two Fire"));
+	Enemies->SetEnemyTwoExplodeSound(TheManagers.CM.LoadAndGetSound("Enemy Two Explode"));
+	Enemies->SetNewWaveSound(TheManagers.CM.LoadAndGetSound("Start Of Wave"));
+
 	return true;
 }
 
@@ -111,6 +124,10 @@ void Game::Draw2D()
 
 	DrawText("Lives:", 50, FieldSize.y - 45, 45, BLUE);
 	DrawText(std::to_string(Player->Lives).c_str(), 50 + (6 * 25),
+		FieldSize.y - 45, 45, BLUE);
+
+	DrawText("Wave:", 800, FieldSize.y - 45, 45, BLUE);
+	DrawText(std::to_string(Enemies->Wave + 1).c_str(), 800 + (6 * 25),
 		FieldSize.y - 45, 45, BLUE);
 }
 

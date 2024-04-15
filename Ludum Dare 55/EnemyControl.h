@@ -22,6 +22,12 @@ public:
 	void SetEnemyOneModel(Model model);
 	void SetEnemyTwoModel(Model model);
 
+	void SetEnemyOneFireSound(Sound sound);
+	void SetEnemyTwoFireSound(Sound sound);
+	void SetEnemyOneExplodeSound(Sound sound);
+	void SetEnemyTwoExplodeSound(Sound sound);
+	void SetNewWaveSound(Sound sound);
+
 	bool Initialize(Utilities* utilities);
 	bool BeginRun();
 
@@ -34,6 +40,12 @@ private:
 	Model ShotModel = { 0 };
 	Model EnemyOneModel = { 0 };
 	Model EnemyTwoModel = { 0 };
+
+	Sound EnemyOneFireSound = { 0 };
+	Sound EnemyTwoFireSound = { 0 };
+	Sound EnemyOneExplodeSound = { 0 };
+	Sound EnemyTwoExplodeSound = { 0 };
+	Sound NewWaveSound = { 0 };
 
 	ThePlayer *Player = nullptr;
 

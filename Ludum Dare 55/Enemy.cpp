@@ -19,6 +19,16 @@ void Enemy::SetShotModel(Model model)
 	ShotModel = model;
 }
 
+void Enemy::SetFireSound(Sound fireSound)
+{
+	FireSound = fireSound;
+}
+
+void Enemy::SetExplodeSound(Sound explodeSound)
+{
+	ExplodeSound = explodeSound;
+}
+
 bool Enemy::Initialize(Utilities* utilities)
 {
 	Model3D::Initialize(utilities);
@@ -57,6 +67,8 @@ void Enemy::Hit()
 {
 	Entity::Hit();
 
+	PlaySound(ExplodeSound);
+
 	Player->ScoreUpdate(Points);
 	Destroy();
 }
@@ -80,6 +92,8 @@ void Enemy::Destroy()
 
 void Enemy::Shoot()
 {
+	PlaySound(FireSound);
+
 	TheManagers.EM.ResetTimer(ShotTimerID);
 
 	bool spawnNew = true;

@@ -29,6 +29,31 @@ void EnemyControl::SetEnemyTwoModel(Model model)
 	EnemyTwoModel = model;
 }
 
+void EnemyControl::SetEnemyOneFireSound(Sound sound)
+{
+	EnemyOneFireSound = sound;
+}
+
+void EnemyControl::SetEnemyTwoFireSound(Sound sound)
+{
+	EnemyTwoFireSound = sound;
+}
+
+void EnemyControl::SetEnemyOneExplodeSound(Sound sound)
+{
+	EnemyOneExplodeSound = sound;
+}
+
+void EnemyControl::SetEnemyTwoExplodeSound(Sound sound)
+{
+	EnemyTwoExplodeSound = sound;
+}
+
+void EnemyControl::SetNewWaveSound(Sound sound)
+{
+	NewWaveSound = sound;
+}
+
 bool EnemyControl::Initialize(Utilities* utilities)
 {
 	Common::Initialize(utilities);
@@ -70,6 +95,8 @@ void EnemyControl::Update()
 
 void EnemyControl::NewWave()
 {
+	PlaySound(NewWaveSound);
+
 	SpawnEnemyOne(6 + (3 * Wave));
 	SpawnEnemyTwo(Wave + 2);
 }
@@ -139,6 +166,8 @@ void EnemyControl::SpawnEnemyOne(size_t count)
 			TheManagers.EM.AddModel3D(EnemyOnes[spawnNumber], EnemyOneModel);
 			EnemyOnes[spawnNumber]->SetPlayer(Player);
 			EnemyOnes[spawnNumber]->SetShotModel(ShotModel);
+			EnemyOnes[spawnNumber]->SetFireSound(EnemyOneFireSound);
+			EnemyOnes[spawnNumber]->SetExplodeSound(EnemyOneExplodeSound);
 			EnemyOnes[spawnNumber]->Initialize(TheUtilities);
 			EnemyOnes[spawnNumber]->BeginRun();
 		}
@@ -171,6 +200,8 @@ void EnemyControl::SpawnEnemyTwo(size_t count)
 			TheManagers.EM.AddModel3D(EnemyTwos[spawnNumber], EnemyTwoModel);
 			EnemyTwos[spawnNumber]->SetPlayer(Player);
 			EnemyTwos[spawnNumber]->SetShotModel(ShotModel);
+			EnemyTwos[spawnNumber]->SetFireSound(EnemyTwoFireSound);
+			EnemyTwos[spawnNumber]->SetExplodeSound(EnemyTwoExplodeSound);
 			EnemyTwos[spawnNumber]->Initialize(TheUtilities);
 			EnemyTwos[spawnNumber]->BeginRun();
 		}
