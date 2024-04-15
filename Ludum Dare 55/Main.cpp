@@ -28,7 +28,7 @@ int main()
 	int windowHeight = 960; //height
 	int windowWidth = 1280; //width
 
-	InitWindow(windowWidth, windowHeight, "Bullet Storm Extrema - Alpha 0.0");
+	InitWindow(windowWidth, windowHeight, "Bullet Storm Extrema - Alpha 1.0");
 	InitAudioDevice();
 
 	Image icon = LoadImage("icon.png");
@@ -37,7 +37,7 @@ int main()
 
 	if (IsWindowState(FLAG_VSYNC_HINT)) ClearWindowState(FLAG_VSYNC_HINT);
 	glfwSwapInterval(0);
-	SetTargetFPS(480);
+	SetTargetFPS(120);
 
 	static Utilities TheUtilities = {};
 	static GameLogic* Logic = {};

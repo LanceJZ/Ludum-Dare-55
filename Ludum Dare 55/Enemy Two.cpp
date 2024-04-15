@@ -14,6 +14,7 @@ bool Enemy_Two::Initialize(Utilities* utilities)
 	Enemy::Initialize(utilities);
 
 	Radius = 20.0f;
+	Points = 100;
 
 	return false;
 }
@@ -123,4 +124,11 @@ void Enemy_Two::Turn()
 		Shoot(VelocityFromAngleZ(300));
 		TheManagers.EM.ResetTimer(ShotTimerID, GetRandomFloat(0.1f, 0.250f));
 	}
+}
+
+bool Enemy_Two::CheckCollision()
+{
+	Enemy::CheckCollision();
+
+	return false;
 }

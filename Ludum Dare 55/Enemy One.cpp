@@ -15,6 +15,7 @@ bool Enemy_One::Initialize(Utilities* utilities)
 	Enemy::Initialize(utilities);
 
 	Radius = 20.0f;
+	Points = 25;
 
 	return false;
 }
@@ -70,7 +71,6 @@ void Enemy_One::Destroy()
 bool Enemy_One::CheckCollision()
 {
 	Enemy::CheckCollision();
-
 
 	return false;
 }

@@ -23,9 +23,12 @@ public:
 	void Spawn(Vector3 position);
 	void Destroy();
 	void Hit();
+	void Reset();
 
 protected:
 	size_t ShotTimerID = 0;
+
+	int Points = 0;
 
 	ThePlayer* Player = nullptr;
 

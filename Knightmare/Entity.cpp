@@ -102,13 +102,11 @@ bool Entity::CirclesIntersectBullet(Entity& target)
 
 		if (TheRayCollision.distance > 0)
 		{
-			if (TheRayCollision.distance > distance + Radius)
-				return false;
+			if (TheRayCollision.distance > distance + Radius) return false;
 		}
 		else
 		{
-			if (TheRayCollision.distance * -1 > distance + Radius)
-				return false;
+			if (TheRayCollision.distance * -1 > distance + Radius) return false;
 		}
 
 		return true;

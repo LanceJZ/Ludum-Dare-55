@@ -40,14 +40,14 @@ bool EnemyControl::BeginRun()
 {
 	Common::BeginRun();
 
-	NewWave();
-
 	return false;
 }
 
 void EnemyControl::Update()
 {
 	Common::Update();
+
+	if (GameOver) return;
 
 	int numberOfEnemies = 0;
 
@@ -74,9 +74,46 @@ void EnemyControl::NewWave()
 	SpawnEnemyTwo(Wave + 2);
 }
 
+void EnemyControl::ClearField()
+{
+	for (auto& enemy : EnemyOnes)
+	{
+		enemy->Reset();
+	}
+
+	for (auto& enemy : EnemyTwos)
+	{
+		enemy->Reset();
+	}
+}
+
 void EnemyControl::Reset()
 {
+	int enemyOneCount = 0;
+	int enemyTwoCount = 0;
+
+	for (auto& enemy : EnemyOnes)
+	{
+		if (enemy->Enabled) enemyOneCount++;
+	}
+
+	for (auto& enemy : EnemyTwos)
+	{
+		if (enemy->Enabled) enemyTwoCount++;
+	}
+
+	ClearField();
+
+	SpawnEnemyOne(enemyOneCount);
+	SpawnEnemyTwo(enemyTwoCount);
+}
+
+void EnemyControl::NewGame()
+{
 	Wave = 0;
+	GameOver = false;
+	ClearField();
+	NewWave();
 }
 
 void EnemyControl::SpawnEnemyOne(size_t count)

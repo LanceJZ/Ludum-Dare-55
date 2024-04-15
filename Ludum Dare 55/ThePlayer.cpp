@@ -26,6 +26,8 @@ bool ThePlayer::Initialize(Utilities* utilities)
 {
 	Model3D::Initialize(utilities);
 
+	Radius = 20.0f;
+
 	return false;
 }
 
@@ -33,7 +35,7 @@ bool ThePlayer::BeginRun()
 {
 	Model3D::BeginRun();
 
-	Y(FieldSize.y * 0.5f - 60.0f);
+	Enabled = false;
 
 	return false;
 }
@@ -92,9 +94,15 @@ void ThePlayer::ScoreUpdate(int addToScore)
 
 void ThePlayer::Reset()
 {
-	Position = { 0, 0, 0 };
+	Y(FieldSize.y * 0.5f - 60.0f);
+	X(0.0f);
 	Velocity = { 0, 0, 0 };
 	Enabled = true;
+
+	for (auto& shot : Shots)
+	{
+		shot->Destroy();
+	}
 }
 
 void ThePlayer::NewGame()

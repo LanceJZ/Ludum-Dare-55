@@ -48,6 +48,8 @@ private:
 	Turret* TurretRight = {};
 
 	void NewGame();
+	void UpdatePlayer();
+	void ResetField();
 	void UpdateTurrets();
 	void SummonTurrets();
 	void UpdateEnemySummonPoints();

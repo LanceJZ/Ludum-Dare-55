@@ -39,4 +39,5 @@ private:
 	TwoGoing CurrentDirection = TwoGoing::Right;
 
 	void Turn();
+	bool CheckCollision();
 };

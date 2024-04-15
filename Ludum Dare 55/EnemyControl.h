@@ -7,6 +7,8 @@
 class EnemyControl : public Common
 {
 public:
+	bool GameOver = true;
+
 	EnemyControl();
 	virtual ~EnemyControl();
 
@@ -25,6 +27,9 @@ public:
 
 	void Update();
 
+	void Reset();
+	void NewGame();
+
 private:
 	Model ShotModel = { 0 };
 	Model EnemyOneModel = { 0 };
@@ -33,7 +38,7 @@ private:
 	ThePlayer *Player = nullptr;
 
 	void NewWave();
-	void Reset();
+	void ClearField();
 	void SpawnEnemyOne(size_t count);
 	void SpawnEnemyTwo(size_t count);
 };

@@ -57,6 +57,17 @@ void Enemy::Hit()
 {
 	Entity::Hit();
 
+	Player->ScoreUpdate(Points);
+	Destroy();
+}
+
+void Enemy::Reset()
+{
+	for (auto& shot : Shots)
+	{
+		shot->Destroy();
+	}
+
 	Destroy();
 }
 
@@ -125,17 +136,39 @@ void Enemy::Shoot(Vector3 velocity)
 
 bool Enemy::CheckCollision()
 {
-	if (CirclesIntersect(*Player)) Hit();
+	if (CirclesIntersect(*Player))
+	{
+		Hit();
+
+		Player->Hit();
+
+		return true;
+	}
+
+	for (auto& shot : Shots)
+	{
+		if (!shot->Enabled) continue;
+
+		if (shot->CirclesIntersect(*Player))
+		{
+			shot->Destroy();
+			Player->Hit();
+
+			return true;
+		}
+	}
 
 	for (auto &shot : Player->Shots)
 	{
+		if (!shot->Enabled) continue;
+
 		if (shot->CirclesIntersectBullet(*this))
 		{
 			Hit();
 			shot->Destroy();
-		}
 
-		return true;
+			return true;
+		}
 	}
 
 	return false;

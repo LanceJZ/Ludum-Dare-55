@@ -103,6 +103,15 @@ void Game::Draw3D()
 
 void Game::Draw2D()
 {
+	DrawText("Score:", 50, 20, 45, BLUE);
+	DrawText(std::to_string(Player->Score).c_str(), 50 + (7 * 25), 20, 45, BLUE);
+
+	DrawText("Summons:", 800, 20, 45, BLUE);
+	DrawText(std::to_string(Player->SummonPoints).c_str(), 800 + (9 * 25), 20, 45, BLUE);
+
+	DrawText("Lives:", 50, FieldSize.y - 45, 45, BLUE);
+	DrawText(std::to_string(Player->Lives).c_str(), 50 + (6 * 25),
+		FieldSize.y - 45, 45, BLUE);
 }
 
 void Game::GameInput()

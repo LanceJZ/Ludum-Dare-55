@@ -58,6 +58,10 @@ void GameLogic::Update()
 
 	if(TurretsActive) UpdateTurrets();
 
+	if (State == InPlay)
+	{
+		UpdatePlayer();
+	}
 }
 
 void GameLogic::GameInput()
@@ -112,23 +116,55 @@ void GameLogic::GameInput()
 		if (IsKeyPressed(KEY_B))
 		{
 		}
-	}
 
-	if (IsKeyPressed(KEY_LEFT_CONTROL))
-	{
-		if (Player->Enabled)
+		if (IsKeyPressed(KEY_LEFT_CONTROL))
 		{
-			if (Player->SummonPoints > 0)
+			if (Player->Enabled && !TurretLeft->Enabled && !TurretRight->Enabled)
 			{
-				Player->SummonPoints--;
-				SummonTurrets();
+				if (Player->SummonPoints > 0)
+				{
+					Player->SummonPoints--;
+					SummonTurrets();
+				}
 			}
 		}
 	}
+
 }
 
 void GameLogic::NewGame()
 {
+	Player->NewGame();
+	Enemies->NewGame();
+
+	State = InPlay;
+}
+
+void GameLogic::UpdatePlayer()
+{
+	if (!Player->Enabled)
+	{
+		TurretLeft->Destroy();
+		TurretRight->Destroy();
+
+		if (Player->Lives == 0)
+		{
+			State = GameState::MainMenu;
+			Enemies->GameOver = true;
+			return;
+		}
+		else
+		{
+			ResetField();
+			return;
+		}
+	}
+}
+
+void GameLogic::ResetField()
+{
+	Enemies->Reset();
+	Player->Reset();
 }
 
 void GameLogic::UpdateTurrets()
